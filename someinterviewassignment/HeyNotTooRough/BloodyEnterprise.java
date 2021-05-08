@@ -4,8 +4,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class BloodyEnterprise implements IEmployee { //todo add tests
-    List<Employee> employees = new ArrayList<>();
+public class BloodyEnterprise implements IEmployee {
+    private final List<Employee> employees = new ArrayList<>();
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
 
     @Override
     public boolean addNewEmp(Employee emp) {
@@ -25,8 +29,8 @@ public class BloodyEnterprise implements IEmployee { //todo add tests
 
         raw.forEach(e -> {
             if (!set.add(e)) {
-                set.add(new Employee(e.getName() + e.getPosition(),
-                        e.getSurname() + e.getPosition(), e.getPosition()));
+                set.add(new Employee(e.getName(),
+                        e.getSurname() + " (" + e.getPosition() + ")", e.getPosition()));
             }
         });
 
